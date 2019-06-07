@@ -1,0 +1,67 @@
+﻿<link rel="stylesheet" href="~/css/site.css" />
+<style>
+    input{
+        width:100%;
+
+    }
+        input[type="submit"]
+        {
+            width:auto;
+        }
+</style>
+@model Projekt_PlatformyDoOrganizacjiWydarzen.Models.TicketsModel
+
+@{
+    ViewData["Title"] = "Dołącz";
+}
+
+<h1>Dołącz</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="">
+                <label asp-for="user_name" class="control-label"></label>
+                <input asp-for="user_name" class="" />
+                <span asp-validation-for="user_name" class="text-danger"></span>
+            </div>
+            <div class="">
+                <label asp-for="user_surname" class="control-label"></label>
+                <input asp-for="user_surname" class="" />
+                <span asp-validation-for="user_surname" class="text-danger"></span>
+            </div>
+            @if (ViewBag.type == "płatne")
+            {
+                <div class="">
+                    <label asp-for="NIP" class="control-label"></label>
+                    <input asp-for="NIP" class="" />
+                    <span asp-validation-for="NIP" class="text-danger"></span>
+                </div>
+            }
+            @Html.HiddenFor(model => model.name)
+            @Html.HiddenFor(model => model.place)
+            @Html.HiddenFor(model => model.hour)
+            @Html.HiddenFor(model => model.event_id)
+            @Html.HiddenFor(model => model.event_type)
+            @Html.HiddenFor(model => model.tickets_per_person)
+            <div class="form-group">
+                Wydarzenie: @Html.DisplayFor(model => model.name)
+            </div>
+            <div class="form-group">
+
+                Miejsce: @Html.DisplayFor(model => model.place)
+            </div>
+            <div class="form-group">
+                Data: @Html.DisplayFor(model => model.hour)
+            </div>
+
+            <div class="">
+                <input type="submit" value="Dołącz" class="" />
+                <a asp-action="Index">Powrót</a>
+            </div>
+        </form>
+    </div>
+</div>
+

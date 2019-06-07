@@ -1,0 +1,20 @@
+﻿@model Projekt_PlatformyDoOrganizacjiWydarzen.Models.TicketsModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Wypisz się z wydarzenia</h1>
+
+<h3>Jesteś pewien, że chcesz się wypisać?</h3>
+<div>
+    <hr />
+    <dl class="row">
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="id" />
+        <input type="submit" value="Wypisz się" class="" /> |
+        <a asp-action="Index">Powrót</a>
+    </form>
+</div>

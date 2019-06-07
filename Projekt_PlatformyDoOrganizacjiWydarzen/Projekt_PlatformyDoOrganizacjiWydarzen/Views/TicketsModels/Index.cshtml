@@ -1,0 +1,63 @@
+﻿<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+<style>
+    h1{
+        font-family: 'Lato', monospace;
+    }
+</style>
+@model IEnumerable<Projekt_PlatformyDoOrganizacjiWydarzen.Models.TicketsModel>
+
+@{
+    ViewData["Title"] = "Bilety";
+}
+
+
+<h1>Moje bilety</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.event_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.place)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.hour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user_mail)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.event_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.place)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hour)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user_mail)
+            </td>
+            <td>
+                <a asp-action="TicketToPdf" asp-route-id="@item.id">PDF</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Szczegóły</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Wypisz się</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,62 @@
+﻿@model Projekt_PlatformyDoOrganizacjiWydarzen.Models.TicketsModel
+
+@{
+    ViewData["Title"] = "Szczegóły";
+}
+
+<h1>Szczegóły</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.place)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.place)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.event_type)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.event_type)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.hour)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.hour)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.user_name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.user_name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.user_surname)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.user_surname)
+        </dd>
+        @if (ViewBag.details_NIP != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.NIP)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.NIP)
+            </dd>
+        }
+    </dl>
+</div>
+<div>
+    <a asp-action="TicketToPdf" asp-route-id="@Model.id">PDF</a> |
+    <a asp-action="Index">Powrót</a>
+</div>

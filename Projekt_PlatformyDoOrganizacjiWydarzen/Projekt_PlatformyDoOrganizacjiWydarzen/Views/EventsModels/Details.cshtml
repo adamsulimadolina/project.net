@@ -1,0 +1,87 @@
+﻿<link rel="stylesheet" href="~/css/site.css" />
+<script src="~/js/site.js"></script>
+@model Projekt_PlatformyDoOrganizacjiWydarzen.Models.EventsModel
+
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h2>EventsModel</h2>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.place)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.place)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.event_type)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.event_type)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.hour)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.hour)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.tickets)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.tickets)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.tickets_per_person)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.tickets_per_person)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.organizer)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.organizer)
+        </dd>
+    </dl>
+</div>
+    
+
+<div>
+    <div class="contain">
+        @if (ViewBag.userID == ViewBag.detailsID || ViewBag.access == true)
+        {
+            @using (Html.BeginForm("SendEmail", "TicketsModels"))
+            {
+                <input type="hidden" asp-for="id" />
+
+                <h3>Wyślij E-mail do uczestników</h3>
+
+                <p class="textclass">Temat:</p>
+                <textarea class="emailclass" name="topic" id="topic" rows="1" style="min-height:34px;"></textarea>
+
+                <p class="textclass">Treść:</p>
+                <textarea class="emailclass" maxlength="300" name="message" id="message" placeholder="Zacznij pisać..." autofocus></textarea>
+                <div id="the-count" class="the-count">
+                    <span id="current">0</span>
+                    <span id="maximum">/ 300</span>
+                </div>
+                <input type="submit" />
+            }
+            <a asp-action="Edit" asp-route-id="@Model.id">Edytuj wydarzenie</a><text> |</text>
+        }
+        <a asp-action="Index">Powrót</a>
+    </div>
+    </div>

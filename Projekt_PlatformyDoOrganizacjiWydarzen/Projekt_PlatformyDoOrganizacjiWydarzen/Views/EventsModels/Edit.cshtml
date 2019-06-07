@@ -1,0 +1,101 @@
+﻿<head>
+    <style>
+        input,select {
+            resize: none;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            padding: 0.5rem;
+            color: #666;
+            box-shadow: inset 0 0 0.25rem #ddd;
+            width:100%;
+        }
+            input[type="submit"] {
+                background-color:gray;
+                color:cornsilk;
+                transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out,
+                    border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out,opacity 0.3s ease-in-out;
+                margin:5px 0px;
+                width:auto;
+            }
+            input:focus,select:focus {
+                outline: none;
+                border: 1px solid;
+                box-shadow: inset 0 0 0.5rem;
+            }
+
+            input[type="submit"]:hover {
+                color: black;
+                background-color: #c6c6c6;
+            }
+
+        a {
+            color: #9b4949
+        }
+
+            a:hover {
+                color: black;
+                text-decoration: none;
+            }
+    </style>
+</head>
+@model Projekt_PlatformyDoOrganizacjiWydarzen.Models.EventsModel
+
+@{
+    ViewData["Title"] = "Edytuj wydarzenie";
+}
+
+<h1>Edytuj wydarzenie</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="id" />
+            <div class="">
+                <label asp-for="name" class="control-label"></label>
+                <input asp-for="name" class="" />
+                <span asp-validation-for="name" class="text-danger"></span>
+            </div>
+            <div class="">
+                <label asp-for="place" class="control-label"></label>
+                <input asp-for="place" class="" />
+                <span asp-validation-for="place" class="text-danger"></span>
+            </div>
+            <div class="">
+                <label asp-for="event_type" class="control-label"></label>
+                <select class="" id="event_type" name="event_type">
+                    <option>płatne</option>
+                    <option>bezpłatne</option>
+                </select>
+            </div>
+            <div class="">
+                <label asp-for="hour" class="control-label"></label>
+                <input asp-for="hour" class="" />
+                <span asp-validation-for="hour" class="text-danger"></span>
+            </div>
+            <div class="">
+                <label asp-for="tickets" class="control-label"></label>
+                <input asp-for="tickets" class="" />
+                <span asp-validation-for="tickets" class="text-danger"></span>
+            </div>
+            <div class="">
+                <label asp-for="tickets_per_person" class="control-label"></label>
+                <input asp-for="tickets_per_person" class="" />
+                <span asp-validation-for="tickets_per_person" class="text-danger"></span>
+            </div>
+            <div class="" hidden>
+                <label asp-for="organizer" class="control-label"></label>
+                <input asp-for="organizer" class="" />
+                <span asp-validation-for="organizer" class="text-danger" hidden></span>
+            </div>
+            <div class="">
+                <input type="submit" value="Zapisz" class="" />
+                <a asp-action="Index">Powrót</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
